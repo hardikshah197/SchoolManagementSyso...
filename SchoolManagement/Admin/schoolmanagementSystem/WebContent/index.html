@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>SCHOOL SYSTEM</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="admin.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <style>
+         table, td, th {
+            border: 1px solid black;
+            width: 300px;
+         }
+         
+      </style>
+  </head>
+  <body>
+    <div id="header">
+         SCHOOL ADMIN
+    </div>
+    <div id="window">
+        <div id="mySidenav" class="sidenav">
+            <br/><br/><b id= "navhead">Manage :-</b><br/><br/><br/>
+            <a href="#main" id="addlink">Add Co-Admin</a>
+            <a href="#main" id="modlink">Modify Co-admin </a>
+            <a href="#main" id="dellink">Remove</a>
+            <a href="#main" id="asslink">Associate Teachers</a>
+            <a href="#main" id="indexlink">Students</a>
+        </div>
+
+    <div id="main">
+        USER NAME: <input id="uname" type="text"></input><br/><br/>
+        PASSWORD: <input id="pass" type="password"></input><br/><br/>
+        <button id="sub">ENTER</button>
+        <script>
+    $(document).on("click", "#sub",function() { 
+        $.get("login",
+        		{
+        		  'id': "print",
+        		  'name':document.getElementById("uname").value,
+        		  'password':document.getElementById("pass").value,
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    $(document).on("click", "#addlink",function() { 
+        $.get("Sadd",
+        		{
+        		  'id': "print",
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    $(document).on("click", "#modlink",function() { 
+        $.get("Smodify",
+        		{
+        		  'id': "print",
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    $(document).on("click", "#asslink",function() { 
+        $.get("Sass",
+        		{
+        		  'id': "print",
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    $(document).on("click", "#dellink",function() { 
+        $.get("Sdelete",
+        		{
+        		  'id': "print",
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    $(document).on("click", "#indexlink",function() { 
+        $.get("indexlet",
+        		{
+        		  'id': "print",
+      			  }
+        ).done(function(response) {   
+        	$("#main").html(response);
+        });
+    });
+    </script>
+    </div>
+	</div>
+    <div id="footer"></div>
+    
+    
+  </body>
+</html>

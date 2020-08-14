@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container" id="home">
+            <nav class="flex items-center justify-between">
+                <div class="left flex items-center">
+                    <div class="branding">
+                        <img src="./images/logo.svg" alt="">
+                    </div>
+                    <div id="link">
+                        <a href="#home">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">School</a>
+                        <a href="#">CLASS</a>
+                        <!-- <a href="#blog">Blog</a> -->
+                    </div>
+                </div>
+                <div class="right"><a href="#fot">
+                    <button class="btn btn-primary">Contact</button></a>
+                </div>
+            </nav>
+            <div class="hero flex items-center justify-between">
+                <div class="left flex-1 flex justify-center">
+                    <img src="./images/download-removebg-preview.png" alt="">
+                </div>
+                <div class="right flex-1">
+                
+                    <h1>School Admin<br/><span>System</span></h1>
+                    <!-- <p>
+                        Don't be petrified.....only excruciating things rewards you...N makes you flawless....
+                        Be the face of your own problems....if you achieve that level, Everyone wants your name.....
+                    </p>
+                    <a href="#" search>
+                    <button class="btn btn-secondary" onsubmit="">DOWNLOAD CV</button> -->
+                    <div class="topnav">
+                        <h5>Search Student :</h5>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div id="main">
+                        <h6 >Details Required:- </h6>
+                        <div id="workspace">
+                            <div id="pnr" class="box">
+                            Enter ID No :- <tb/>
+                            <input style="margin-left: 5rem" id="pnrno" type="number"/><br/><br/>
+                            Select Your Class :-		
+                            <select style="margin-left: 2.8rem" id="stop"></select><br/>    
+                            Select Your School :- 
+                            <select style="margin-left: 2.2rem" id="stat"></select><br/><br/>
+                            Enter Class Time :-
+                            <input style="margin-left: 2.8rem" id="time" type="time"/><br/><br/>
+                            <button class="btn btn-secondary" id="search">Search</button>
+                            </div>
+                            
+                            <div class="box"><table id="bues"></table></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="fot" class="footer flex">
+        
+        Designed by:Hardik Sharma</p>
+        <div class="social flex-1">
+            <a href="https://github.com/hardikshah197"><img src="./images/github.png" alt=""></a>
+            <a href="https://www.facebook.com/HardyShah197"><img src="./images/facebook.png" alt=""></a>
+            <a href="https://twitter.com/"><img src="./images/twitter.png" alt=""></a>
+            <a href="https://www.instagram.com/_hardik_007__/"><img src=".\images\instagram.png" alt=""></a>
+            <a href="https://www.linkedin.com/in/hardik-sharma-2419841a3"><img src="./images/linkedin.png" alt=""></a>
+        </div>
+    </div>
+    <script>
+    		$(document).ready(function(){
+    			$.get("GenUI", {"id":"showStops"}).done(function(response){
+    				$("#stop").html(response);
+    			});
+    			$.get("GenUI", {"id":"showStat"}).done(function(response){
+    				$("#stat").html(response);
+    			});
+    		});
+    		$("#search").click(function(){
+    			$.get("GenUI", {"id":"show",
+    				"pnr": document.getElementById("pnrno").value,
+    				"time": document.getElementById("time").value,
+    				"stop": document.getElementById("stop").value,
+    				"stat": document.getElementById("stat").value
+    				}).done(function(response){
+    				$("#bues").html(response);
+    			});
+    		});
+    </script>
+</body>
+</html>

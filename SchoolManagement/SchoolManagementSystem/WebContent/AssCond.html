@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>School Admin</title>
+    <link href="admin.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+         ADMIN
+    </div>
+    <div id="window">
+        <div id="mySidenav" class="sidenav">
+            <br/><br/><b id= "navhead">Manage :-</b><br/><br/><br/>
+            <a href="addHost.html">Add Teacher</a>
+            <a href="modify.html">Modify Class</a>
+            <a href="DeleteHost.html">Delete Teacher</a>
+            <a href="AssCond.html" id="highlight">Associate Co_Host</a>
+            <a href="index.html">Index</a>
+        </div>
+
+    <div id="main">
+        <hr size="2px">
+        <div id="ass" class="section">
+            <p class="heading">ASSOCIATE Co-Host</p>
+            
+             CO-Host NUMBER:     <select id="busNoid" ></select> <br /><br/>
+             CO-Host name:  <input id= "conid" type="text" /> <br /><br/>
+             <button id="submit">ADD Co-Host</button>
+             
+        </div>
+    </div>
+	</div>
+    <div id="footer"></div>
+    
+    <script>
+    $(document).on("click", "#submit", function() { 
+        $.get("Sass",{'busNo': document.getElementById("busNoid").value,
+        			  'con': document.getElementById("conid").value
+     	}).done(function(response) {   
+            alert(response);
+        });
+    });
+    
+    $(document).ready(function() { 
+        $.get("Smodify",
+        		{
+        		  'id': "showBusNo"
+      			  }
+        ).done(function(response) {   
+        	$("#busNoid").html(response);
+        });
+    });
+    </script>
+  </body>
+</html>
